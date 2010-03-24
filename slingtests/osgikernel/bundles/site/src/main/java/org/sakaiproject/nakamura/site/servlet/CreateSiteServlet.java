@@ -221,6 +221,12 @@ public class CreateSiteServlet extends AbstractSiteServlet {
         }
         siteNode.setProperty(JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY,
             SiteService.SITE_RESOURCE_TYPE);
+            
+        // Set the site type
+        RequestParameter sakaiSiteType = request
+            .getRequestParameter(SiteService.SAKAI_SITE_TYPE);
+        if ( sakaiSiteType != null )
+            siteNode.setProperty(SiteService.SAKAI_SITE_TYPE, sakaiSiteType.getString() );
 
         // setup the ACL's on the node. After this point, administrator
         // access should no longer be needed.
